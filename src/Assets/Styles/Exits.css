@@ -1,0 +1,153 @@
+.exitsPage{
+    background-color: #F1EFD6;
+    box-shadow: #0e726d42 1px 1px 10px 1px;
+    border-radius: 1vw;
+
+    width: 40vw;
+    height: 65vh;
+    margin: 17.5vh auto;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.exitsPage .back{
+    position: relative;
+    width: 3vw;
+    height: 5vh;
+    margin-top: 1vh;
+    margin-bottom: 3vh;
+    margin-right: 33vw;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    background-color: #30cfc7;
+    box-shadow: inset 2px 2px 5px 0.05vw #0e726dc9;
+    border-radius: 50%;
+
+    cursor: pointer;
+}
+
+.exitsPage .back:hover{
+    box-shadow: none;
+    
+    transform: scale(1.1);
+}
+
+.exitsPage .back ion-icon{
+    font-size: 1.5vw;
+    color: #F1EFD6;
+}
+
+.exitsPage .header{
+    width: 21vw;
+    height: 10vh;
+    margin-top: 0;
+    margin-bottom: 5vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    background-color: #30cfc7;
+    box-shadow: inset 3px 3px 5px 0.05vw #0e726d;
+    border-radius: 1vw;
+}
+
+.exitsPage .header h1{
+    font-size: 1.7vw;
+    font-weight: bold;
+    color: #F1EFD6;
+    font-family: 'TrinidadNeue', sans-serif;
+    letter-spacing: 0.02vw;
+    text-transform: uppercase;
+}
+
+.exitsPage_content{
+    border-radius: 1vw;
+
+    width: 21vw;
+    margin: 0 auto;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.exitsPage_content form{
+    width: 21vw;
+    height: fit-content;
+    margin: 1vh auto;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1vh;
+}
+
+.exitsPage_content form label{
+    margin: auto auto 0vh 0.5vw;
+    font-size: 0.8vw;
+    font-weight: bold;
+    color: #30cfc7;
+    font-family: 'TrinidadNeue', sans-serif;
+    letter-spacing: 0.02vw;
+}
+
+.exitsPage_content form input{
+    width: 20vw;
+    height: 5vh;
+    margin: 0vh 0 1vh 0;
+
+    border-radius: 0.5vw;
+    border: none;
+    box-shadow: inset 3px 3px 5px 0.05vw #0e726d;
+    background-color: #30cfc7;
+    color: #F1EFD6;
+    font-family: 'TrinidadNeue', sans-serif;
+    font-size: 1vw;
+    font-weight: bold;
+    text-align: center;
+}
+
+.exitsPage_content form input::after,
+.exitsPage_content form input:hover,
+.exitsPage_content form input:focus{
+    outline: none;
+    border: none;
+
+    transform: scale(1.05);
+}
+
+.exitsPage_content form button{
+    width: 12vw;
+    height: 5vh;
+    margin: auto auto 11vh auto;
+
+    border-radius: 0.5vw;
+    border: none;
+    box-shadow: inset 3px 3px 5px 0.05vw #0e726d;
+    background-color: #30cfc7;
+    color: #F1EFD6;
+    font-family: 'TrinidadNeue', sans-serif;
+    font-size: 0.9vw;
+    font-weight: bold;
+    text-align: center;
+    letter-spacing: 0.05vw;
+
+    cursor: pointer;
+}
+
+.exitsPage_content form button:hover{
+    box-shadow: none;
+
+    transform: scale(1.1);
+}

@@ -1,0 +1,137 @@
+.registerPage{
+    background-color:#F1EFD6;
+    width: 30vw;
+    height: 75vh;
+    margin: 12.5vh auto;
+
+    border-radius: 1vw;
+    box-shadow: #0e726d 5px 5px 10px 2px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Logo */
+.registerPage .header{
+    width: 21vw;
+    height: 12vh;
+    margin-bottom: 3vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    background-color: #30cfc7;
+    box-shadow: inset 3px 3px 5px 0.05vw #0e726d;
+    border-radius: 1vw;
+}
+
+.registerPage .header h1{
+    font-size: 2.5vw;
+    font-weight: bold;
+    color: #F1EFD6;
+    font-family: 'TrinidadNeue', sans-serif;
+    letter-spacing: 0.02vw;
+}
+
+.registerPage form{
+    width: 21vw;
+    height: fit-content;
+    margin: 0 auto;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1vh;
+}
+
+.registerPage form label{
+    margin: auto auto 0vh 0.5vw;
+    font-size: 0.8vw;
+    font-weight: bold;
+    color: #30cfc7;
+    font-family: 'TrinidadNeue', sans-serif;
+    letter-spacing: 0.02vw;
+}
+
+.registerPage form input{
+    width: 20vw;
+    height: 4vh;
+    margin: 0vh 0 1vh 0;
+
+    border-radius: 0.5vw;
+    border: none;
+    box-shadow: inset 3px 3px 5px 0.05vw #0e726d;
+    background-color: #30cfc7;
+    color: #F1EFD6;
+    font-family: 'TrinidadNeue', sans-serif;
+    font-size: 1vw;
+    font-weight: bold;
+    text-align: center;
+}
+
+.registerPage form input:focus,
+.registerPage form input:active,
+.registerPage form input:hover{
+    outline: none;
+    border: none;
+
+    transform: scale(1.05);
+}
+
+.registerPage form button{
+    width: 12vw;
+    height: 5vh;
+    margin: 1.5vh auto 1vh auto;
+
+    border-radius: 0.5vw;
+    border: none;
+    box-shadow: inset 3px 3px 5px 0.05vw #0e726d;
+    background-color: #30cfc7;
+    color: #F1EFD6;
+    font-family: 'TrinidadNeue', sans-serif;
+    font-size: 0.9vw;
+    font-weight: bold;
+    text-align: center;
+    letter-spacing: 0.05vw;
+
+    cursor: pointer;
+}
+
+.registerPage form button:hover{
+    background-color: #01e6da;
+
+    box-shadow: none;
+
+    transform: scale(1.1);
+}
+
+/* Button singup */
+.registerPage .login button{
+    background-color: transparent;
+    border: none;
+
+    width: 9.5vw;
+    height: fit-content;
+
+    margin: 0 auto 2vh auto;
+
+    color: #30cfc7;
+    font-family: 'TrinidadNeue', sans-serif;
+    font-size: 0.7vw;
+    font-weight: bold;
+    text-align: center;
+    letter-spacing: 0.07vw;
+
+    cursor: pointer;
+}
+
+.registerPage .login button:hover{
+    color: #0e726d;
+
+    transform: scale(1.1);
+}

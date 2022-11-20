@@ -1,0 +1,144 @@
+header{
+    position: absolute;
+    width: 100vw;
+    height: 11vh;
+    top: 0;
+    bottom: auto;
+    z-index: 9;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    background-color: #30cfc7;
+    box-shadow: #0e726d6b 1px 1px 10px 1px;
+}
+
+header .logo{
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: auto;
+    width: 5vw;
+    height: 10vh;
+    margin: 0.5vh auto auto 1vw;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    background-color: #f1efd64b;
+    box-shadow: inset 3px 3px 5px 0.05vw #0e726d;
+    border-radius: 50%;
+}
+
+header .logo img{
+    position: absolute;
+    width: 4vw;
+    height: auto;
+}
+
+header p{
+    width: 3.3vw;
+    font-size: 0.9vw;
+    font-weight: bold;
+    color: #F1EFD6;
+    font-family: 'TrinidadNeue', sans-serif;
+    letter-spacing: 0.02vw;
+}
+
+/* USER */
+
+header .user{
+    position: absolute;
+    background-color: #f1efd649;
+    border-radius: 0.5vw;
+
+    right: 1vw;
+    top: 2vh;
+    bottom: 2vh;
+    width: 20vw;
+    height: 7vh;
+    margin: auto;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+header .user .user_info{
+    width: 15vw;
+    height: 7vh;
+    margin-left: 0;
+    margin-right: auto;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: left;
+}
+
+header .user .user_info ion-icon{
+    font-size: 6vh;
+    color: #F1EFD6;
+    margin-left: 1vw;
+    margin-right: 0.5vw;
+}
+
+header .use .user_info p:nth-child(2){
+    width: 2.2vw;
+    font-size: 0.9vw;
+    color: #F1EFD6;
+    font-family: 'TrinidadNeue', sans-serif;
+    letter-spacing: 0.02vw;
+}
+
+header .user .user_info p:nth-child(3){
+    width: fit-content;
+    font-size: 1vw;
+    font-weight: bolder;
+    color: #F1EFD6;
+    font-family: 'TrinidadNeue', sans-serif;
+    letter-spacing: 0.02vw;
+    text-transform: uppercase;
+}
+
+header .user_logout{
+    margin-right: 0;
+    margin-left: auto;
+    width: 5vw;
+    height: 7vh;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+header .user .user_logout button{
+    width: 2.5vw;
+    height: 4vh;
+    margin-right: 1vw;
+
+    border-radius: 0.5vw;
+    border: none;
+    box-shadow: inset 3px 3px 5px 0.05vw #0e726d;
+    background-color: #30cfc7;
+    
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+}
+
+header .user .user_logout button ion-icon{
+    font-size: 1.5vw;
+    color: #F1EFD6;
+
+    margin-left: 0.3vw;
+}
