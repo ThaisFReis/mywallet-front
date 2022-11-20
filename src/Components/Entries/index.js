@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom';
-import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import React, { useState, useContext } from 'react';
 
 // CSS
 import "../../Assets/Styles/Entries.css";
@@ -8,10 +8,32 @@ import "../../Assets/Styles/Entries.css";
 import Footer from '../Footer';
 import Header from '../Header';
 
-function Entries () {
+// userContext and api are imported from other files
+import { userContext } from "../Contexts/userContext"
+import api from '../Services/api';
 
+function Entries () {
+    const [ token ] = useContext(userContext);
+    const [ entries, setEntries ] = useState({
+        value: "",
+        description: "",
+        type: "+",
+    });
+    const navigate = useNavigate();
+
+    if (!token) {
+        navigate("/login");
+    }
+
+    /*Handle Submit
+    async function handleSubmit(e){
+        e.preventDefault();
+
+        try {
+            await api.
+*/
   return (
-    <body>
+    <>
         <Header />
         <div className="entriesPage">
             <Link to="/userPage">
@@ -33,7 +55,7 @@ function Entries () {
             </div>
         </div>
         <Footer />
-    </body>
+    </>
   );
 }
 

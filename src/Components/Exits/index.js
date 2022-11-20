@@ -11,7 +11,7 @@ import Header from '../Header';
 function Exits () {
     
       return (
-     <body>
+     <>
           <Header />
           <div className="exitsPage">
             <Link to="/userPage">
@@ -33,7 +33,7 @@ function Exits () {
                 </div>
           </div>
           <Footer />
-     </body>
+     </>
       );
 }
 

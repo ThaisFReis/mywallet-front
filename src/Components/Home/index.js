@@ -11,7 +11,7 @@ import Logo from "../../Assets/Images/Logo.png";
 
 function Home () {
     return (
-        <body>
+        <>
             <div className="homePage">
                 <div className="logo">
                     <h1>MY WALLET</h1>
@@ -23,16 +23,16 @@ function Home () {
                     <img src={Logo} alt="Logo" />
                 </div>
                 <div className="buttons">
-                    <Link to="/Login">
+                    <Link to="/login">
                         <button>LOGIN</button>
                     </Link>
-                    <Link to="/Cadastro">
+                    <Link to="/register">
                         <button>CADASTRO</button>
                     </Link>
                 </div>
             </div>
             <Footer />
-        </body>
+        </>
     )
 }
 
