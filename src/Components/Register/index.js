@@ -10,45 +10,33 @@ import Footer from '../Footer';
 
 // userContext and api are imported from other files
 import { userContext } from "../Contexts/userContext"
-import api from '../Services/api';
 
 function Register () {
-  const [ formData, setFormData ] = useState({
-    name: "",
-    email: "",
-    password: "",
-    confirmPassword: "",
-  });
-
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [passwordConfirmation, setPasswordConfirmation] = useState("");
   const navigate = useNavigate();
 
-  //Handle Submit
   async function handleSubmit(e){
     e.preventDefault();
 
-    if(formData.password !== formData.confirmPassword && formData.confirmPassword !== "") {
-      alert("Senhas não conferem");
+    const body = {
+      name,
+      email,
+      password,
+      passwordConfirmation
     }
 
     try {
-      await api.login({
-        name: formData.name,
-        email: formData.email,
-        password: formData.password,
-      })
+      const response = await axios.post("/register", body);
+      console.log(response);
 
       navigate("/login");
     } catch (error) {
+      alert("Erro ao cadastrar");
       console.log(error);
     }
-  }
-
-  // Handle Change
-  function handleChange(e) {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
   }
 
   return (
@@ -59,14 +47,14 @@ function Register () {
           </div>
           <form onSubmit={handleSubmit}>
             <label htmlFor="name">Nome:</label>
-            <input type="name" name="name" id="name" value={formData.name} onChange={handleChange} required />
+            <input type="name" name="name" id="name" value={name} onChange={ e => setName(e.target.value)} required />
             <label htmlFor="email">E-mail:</label>
-            <input type="email" name="email" id="email" value={formData.email} onChange={handleChange} required />
+            <input type="email" name="email" id="email" value={email} onChange={e => setEmail(e.target.value)} required />
             <label htmlFor="password">Senha:</label>
-            <input type="password" name="password" id="password" value={formData.password} onChange={handleChange} required />
+            <input type="password" name="password" id="password" value={password} onChange={e => setPassword(e.target.value)} required />
             <label htmlFor="confirmPassword">Confirme sua senha:</label>
-            <input type="password" name="confirmPassword" id="confirmPassword" value={formData.confirmPassword} onChange={handleChange} required />
-            <button type="submit">Cadastrar</button>
+            <input type="password" name="confirmPassword" id="confirmPassword" value={passwordConfirmation} onChange={e => setPasswordConfirmation(e.target.value)} required />
+            <button type="submit" onClick={handleSubmit}>CADASTRAR</button>
           </form>
           <div className="login">
             <Link to="/login">

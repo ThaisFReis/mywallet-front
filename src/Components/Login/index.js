@@ -10,10 +10,10 @@ import Footer from '../Footer';
 
 // userContext and api are imported from other files
 import { userContext } from "../Contexts/userContext"
-import api from '../Services/api';
 
 function Login () {
   const { setUser, setToken } = useContext(userContext);
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState(""); 
 
@@ -22,17 +22,21 @@ function Login () {
   async function handleSubmit(e){
     e.preventDefault();
 
-    try {
-      const response = await api.login({ email, password });
+    const body = {
+      email,
+      password
+    }
 
-      setUser(response.data);
+    try {
+      const response = await axios.post("/login", body);
+
+      setUser(response.data.user);
       setToken(response.data.token);
-      navigate("/userPage");
+      navigate("/pageUser");
     } catch (error) {
-      console.log(error);
+      alert("Email ou senha incorretos");
     }
   }
-
 
   return (
       <>

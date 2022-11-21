@@ -1,6 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom';
 import React, { useState, useEffect, useContext } from 'react';
 import dayjs from 'dayjs';
+import axios from 'axios';
 
 // CSS
 import "../../Assets/Styles/UserPage.css";
@@ -11,67 +12,59 @@ import Header from '../Header';
 
 // userContext and api are imported from other files
 import { userContext } from "../Contexts/userContext"
-import api from '../Services/api';
 
 function  UserPage  () {
   const [ user, token ] = useContext(userContext);
+  const [ entries, setEntries ] = useState([]);
+  const [ total, setTotal ] = useState(0);
 
   const navigate = useNavigate();
-
-  const [ register, setRegister ] = useState([]);
-  const [ total, setTotal ] = useState(0);
-  const [ type, settype ] = useState("");
 
   if (!user || !token) {
     navigate("/login");
   }
 
-  // Get Entries
   useEffect(() => {
-    api.getEntries(token)
-      .then((response) => {
-        setRegister(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      })
+
+    async function getEntries() {
+      try {
+        const response = await axios.get("/entries", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        setEntries(response.data);
+      } catch (error) {
+        alert("Não foi possível carregar os registros");
+      }
+    }
+
+    getEntries();
   }, [token]);
 
   // Total
   useEffect(() => {
     let total = 0;
-    register.forEach((item) => {
-      if (item.type === "+") {
-        total += item.value;
+
+    entries.forEach((entry) => {
+      if (entry.type === "-") {
+        total -= entry.value;
       } else {
-        total -= item.value;
+        total += entry.value;
       }
     });
     setTotal(total);
-  }, [register]);
-
-  // Type
-  useEffect(() => {
-    let type = "";
-    if (total < 0) {
-      type = "negative";
-    } else if (total > 0) {
-      type = "positive";
-    } else {
-      type = "neutral";
-    }
-    settype(type);
-  }, [total]);
+  }, [entries]);
 
   return (
     <>
       <Header />
         <div className="userPage">
           <div className="userPage_register">
-            { register.length === 0 && <p>Nenhum registro encontrado</p> }
-            { register.length > 0 && (
+            { entries.length === 0 && <p>Nenhum registro encontrado</p> }
+            { entries.length > 0 && (
               <>
-                { register.map((item, index) => (
+                { entries.map((item, index) => (
                     <div className="userPage_register_content_body" key={index}>
                       <div className="userPage_register_content_body_date">
                         <p>{dayjs(item.date).format("DD/MM/YY")}</p>
