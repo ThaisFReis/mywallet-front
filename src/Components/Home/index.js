@@ -26,7 +26,7 @@ function Home () {
                     <Link to="/login">
                         <button>LOGIN</button>
                     </Link>
-                    <Link to="/register">
+                    <Link to="/singUp">
                         <button>CADASTRO</button>
                     </Link>
                 </div>

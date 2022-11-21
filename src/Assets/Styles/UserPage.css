@@ -17,7 +17,7 @@
 .userPage_register{
     background-color: #f1efd6b6;
     box-shadow: #0e726d42 1px 1px 10px 1px;
-    border-radius: 1vw;
+    border-radius: 1vw 1vw 0 0;
 
     width: 40vw;
     height: 40vh;
@@ -26,8 +26,14 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: top;
     text-align: center;
+
+    overflow-x: hidden;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    scrollbar-width: auto;
+    scrollbar-color: #30cfc7 #f1efd6b6;
 }
 
 /* -------------------      NO REGISTER    ------------------- */
@@ -52,12 +58,6 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
-
-    overflow-x: hidden;
-    overflow-y: scroll;
-    scroll-behavior: smooth;
-    scrollbar-width: auto;
-    scrollbar-color: #30cfc7 #f1efd6b6;
 }
 
 .userPage_register_content_body{
@@ -100,6 +100,9 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
+    
+    word-wrap: break-word;
+    word-break: normal;
 }
 .userPage_register_content_body_item p{
     width: 19vw;
@@ -115,9 +118,12 @@
     margin: 0;
 
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: space-around;
+
+
 }
 
 .userPage_register_content_body_value p{
@@ -125,16 +131,19 @@
     font-size: 1vw;
     font-weight: bold;
     color: #30cfc7;
-    text-transform: uppercase;
+
+    word-wrap: break-word;
+    word-break: normal;
 }
 
 /* -------------------      FOOTER REGISTER    ------------------- */
 .userPage_register_content_footer{
+    position: absolute;
     background-color: #f1efd6b6;
     border-radius: 0 0 1vw 1vw;
     width: 40vw;
     height: 5vh;
-    margin: auto auto 0 auto;
+    bottom: 32.4vh;
 
     display: flex;
     flex-direction: row;

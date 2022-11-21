@@ -10,16 +10,16 @@ import Footer from '../Footer';
 import Header from '../Header';
 
 // userContext and api are imported from other files
-import { userContext } from "../Contexts/userContext"
+import userContext from "../Contexts/userContext"
 
 function Entries () {
-    const { user, token} = useContext(userContext);
+    const { user } = useContext(userContext);
     const [ value, setValue ] = useState("");
     const [ description, setDescription ] = useState("");
 
     const navigate = useNavigate();
 
-    if (!token) {
+    if (!user.token) {
         navigate("/login");
     }
     
@@ -28,20 +28,20 @@ function Entries () {
         
 
         const body = {
-            value: "",
-            description: "",
+            value: parseFloat(value),
+            description,
             type: "+",
         };
 
         const headers = {
-            headers: { Authorization: `Bearer ${token}` },
+            headers: { Authorization: `Bearer ${user.token}` },
         };
 
         try {
-            const response = await axios.post("/entries", body, headers);
-            console.log(response);
+            await axios.post("http://localhost:5000/entries", body, headers);
+            navigate("/userPage");
         } catch (error) {
-            console.log(error);
+            console.log(error, "erro no front");
         }
     }
 
@@ -60,9 +60,9 @@ function Entries () {
             <div className="entriesPage_content">
                 <form>
                     <label htmlFor="value">Valor:</label>
-                    <input type="number" name="value" id="value" value={value} onChange={e => setValue(e.target.value)} placeholder="Valor" />
+                    <input type="number" name="value" id="value" value={value} onChange={e => setValue(e.target.value)} placeholder="Valor" required />
                     <label htmlFor="description">Descrição:</label>
-                    <input type="text" name="description" id="description" value={description} onChange={e => setDescription(e.target.value)} placeholder="Descrição" />
+                    <input type="text" name="description" id="description" value={description} onChange={e => setDescription(e.target.value)} placeholder="Descrição" required />
                     <button type="submit" onClick={handleSubmit}>Salvar</button>
                 </form>
             </div>

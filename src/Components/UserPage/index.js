@@ -1,6 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom';
 import React, { useState, useEffect, useContext } from 'react';
-import dayjs from 'dayjs';
 import axios from 'axios';
 
 // CSS
@@ -11,16 +10,16 @@ import Footer from '../Footer';
 import Header from '../Header';
 
 // userContext and api are imported from other files
-import { userContext } from "../Contexts/userContext"
+import userContext from "../Contexts/userContext"
 
 function  UserPage  () {
-  const [ user, token ] = useContext(userContext);
+  const { user } = useContext(userContext);
   const [ entries, setEntries ] = useState([]);
   const [ total, setTotal ] = useState(0);
 
   const navigate = useNavigate();
 
-  if (!user || !token) {
+  if (!user || !user.token) {
     navigate("/login");
   }
 
@@ -28,9 +27,9 @@ function  UserPage  () {
 
     async function getEntries() {
       try {
-        const response = await axios.get("/entries", {
+        const response = await axios.get("http://localhost:5000/entries", {
           headers: {
-            Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${user.token}`,
           },
         });
         setEntries(response.data);
@@ -40,7 +39,7 @@ function  UserPage  () {
     }
 
     getEntries();
-  }, [token]);
+  }, [user.token]);
 
   // Total
   useEffect(() => {
@@ -67,7 +66,7 @@ function  UserPage  () {
                 { entries.map((item, index) => (
                     <div className="userPage_register_content_body" key={index}>
                       <div className="userPage_register_content_body_date">
-                        <p>{dayjs(item.date).format("DD/MM/YY")}</p>
+                        <p>{item.date}</p>
                       </div>
                       <div className="userPage_register_content_body_item">
                         <p>{item.description}</p>
@@ -78,15 +77,17 @@ function  UserPage  () {
                     </div>
                   ))
                 }
-                <div className="userPage_register_content_footer">
-                  <p>Saldo</p>
-                  <div className="userPage_register_content_footer_value">
-                    <p>{(parseFloat(total).toFixed(2)).replace(".", ",")}</p>
-                  </div>
-                </div>
               </>
             )}
           </div>
+          { entries.length > 0 && (
+            <div className="userPage_register_content_footer">
+              <p>Saldo</p>
+              <div className="userPage_register_content_footer_value">
+                <p>{(parseFloat(total).toFixed(2)).replace(".", ",")}</p>
+              </div>
+            </div>
+            )}
           <div className="menu">
             <Link to="/entries">
               <div className="menu_item">

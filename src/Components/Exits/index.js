@@ -9,17 +9,17 @@ import "../../Assets/Styles/Exits.css"
 import Footer from '../Footer';
 import Header from '../Header';
 
-// userContext and api are imported from other files
-import { userContext } from "../Contexts/userContext"
+// Import userContext from context
+import userContext from '../Contexts/userContext.js';
 
 function Exits () {
-    const { user, token} = useContext(userContext);
+    const { user } = useContext(userContext);
     const [ value, setValue ] = useState("");
     const [ description, setDescription ] = useState("");
 
     const navigate = useNavigate();
 
-    if (!token) {
+    if (!user.token) {
         navigate("/login");
     }
 
@@ -27,18 +27,20 @@ function Exits () {
         e.preventDefault();
 
         const body = {  
-            value: "",
-            description: "",
+            value,
+            description,
             type: "-",
         };
 
         const headers = {
-            headers: { Authorization: `Bearer ${token}` },
+            headers: { Authorization: `Bearer ${user.token}` }
         };
 
         try {
-            const response = await axios.post("/entries", body, headers);
+            const response = await axios.post("http://localhost:5000/entries", body, headers);
             console.log(response);
+
+            navigate("/userPage");
         } catch (error) {
             console.log(error);
         }

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { useState, useContext } from 'react';
+import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 
 // CSS
@@ -8,29 +8,27 @@ import "../../Assets/Styles/Register.css";
 // Import
 import Footer from '../Footer';
 
-// userContext and api are imported from other files
-import { userContext } from "../Contexts/userContext"
-
-function Register () {
+function SingUp () {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
+
   const navigate = useNavigate();
 
   async function handleSubmit(e){
     e.preventDefault();
 
     const body = {
-      name,
       email,
+      name,
       password,
       passwordConfirmation
     }
 
     try {
-      const response = await axios.post("/register", body);
-      console.log(response);
+      await axios.post("http://localhost:5000/singup", body);
+      console.log("Cadastro realizado com sucesso!");
 
       navigate("/login");
     } catch (error) {
@@ -52,8 +50,8 @@ function Register () {
             <input type="email" name="email" id="email" value={email} onChange={e => setEmail(e.target.value)} required />
             <label htmlFor="password">Senha:</label>
             <input type="password" name="password" id="password" value={password} onChange={e => setPassword(e.target.value)} required />
-            <label htmlFor="confirmPassword">Confirme sua senha:</label>
-            <input type="password" name="confirmPassword" id="confirmPassword" value={passwordConfirmation} onChange={e => setPasswordConfirmation(e.target.value)} required />
+            <label htmlFor="passwordConfirmation">Confirme sua senha:</label>
+            <input type="password" name="passwordConfirmation" id="passwordConfirmation" value={passwordConfirmation} onChange={e => setPasswordConfirmation(e.target.value)} required />
             <button type="submit" onClick={handleSubmit}>CADASTRAR</button>
           </form>
           <div className="login">
@@ -67,4 +65,4 @@ function Register () {
   )
 }
 
-export default Register;
+export default SingUp;

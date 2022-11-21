@@ -9,10 +9,10 @@ import "../../Assets/Styles/Login.css";
 import Footer from '../Footer';
 
 // userContext and api are imported from other files
-import { userContext } from "../Contexts/userContext"
+import userContext from "../Contexts/userContext"
 
 function Login () {
-  const { setUser, setToken } = useContext(userContext);
+  const { setUser } = useContext(userContext);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState(""); 
@@ -28,11 +28,10 @@ function Login () {
     }
 
     try {
-      const response = await axios.post("/login", body);
+      const response = await axios.post("http://localhost:5000/login", body);
 
-      setUser(response.data.user);
-      setToken(response.data.token);
-      navigate("/pageUser");
+      setUser(response.data);
+      navigate("/userPage");
     } catch (error) {
       alert("Email ou senha incorretos");
     }
@@ -52,7 +51,7 @@ function Login () {
             <button type="submit">ENTRAR</button>
           </form>
           <div className="register">
-            <Link to="/register">
+            <Link to="/singUp">
                 <button> NÃO TEM UMA CONTA? CADASTRE-SE </button>
             </Link>
           </div>
