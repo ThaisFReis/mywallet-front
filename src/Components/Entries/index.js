@@ -41,7 +41,7 @@ function Entries () {
             await axios.post("http://localhost:5000/entries", body, headers);
             navigate("/userPage");
         } catch (error) {
-            console.log(error, "erro no front");
+            console.log(error);
         }
     }
 

@@ -33,7 +33,7 @@ function Login () {
       setUser(response.data);
       navigate("/userPage");
     } catch (error) {
-      alert("Email ou senha incorretos");
+      alert("Dados incorretos");
     }
   }
 

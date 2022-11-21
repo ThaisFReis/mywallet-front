@@ -59,27 +59,31 @@ function  UserPage  () {
     <>
       <Header />
         <div className="userPage">
-          <div className="userPage_register">
-            { entries.length === 0 && <p>Nenhum registro encontrado</p> }
-            { entries.length > 0 && (
-              <>
-                { entries.map((item, index) => (
-                    <div className="userPage_register_content_body" key={index}>
-                      <div className="userPage_register_content_body_date">
-                        <p>{item.date}</p>
+          { entries.length !== 0 ? 
+            <div className="userPage_register">
+                  { entries.map((item, index) => (
+                      <div className="userPage_register_content_body" key={index}>
+                        <div className="userPage_register_content_body_date">
+                          <p>{item.date}</p>
+                        </div>
+                        <div className="userPage_register_content_body_item">
+                          <p>{item.description}</p>
+                        </div>
+                        <div className="userPage_register_content_body_value">
+                          <p style={item.type === "+" ? { color: "#03AC00" } : { color: "#C70000" }}>{(parseFloat(item.value).toFixed(2)).replace(".", ",")}</p>
+                        </div>
                       </div>
-                      <div className="userPage_register_content_body_item">
-                        <p>{item.description}</p>
-                      </div>
-                      <div className="userPage_register_content_body_value">
-                        <p style={item.type === "+" ? { color: "#03AC00" } : { color: "#C70000" }}>{(parseFloat(item.value).toFixed(2)).replace(".", ",")}</p>
-                      </div>
-                    </div>
-                  ))
-                }
-              </>
-            )}
-          </div>
+                    ))
+                  }
+            </div>
+
+          : 
+          
+            <div className="userPage_register" style={{ justifyContent: "center"}}>
+              <p>Nenhum registro encontrado</p>
+            </div>
+
+          }
           { entries.length > 0 && (
             <div className="userPage_register_content_footer">
               <p>Saldo</p>

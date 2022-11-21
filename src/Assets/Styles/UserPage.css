@@ -151,7 +151,10 @@
     justify-content: space-around;
 }
 .userPage_register_content_footer p{
-    width: 18vw;
+    width: 10vw;
+    margin: auto;
+    margin-left: 1vw;
+
     font-size: 1vw;
     font-weight: bold;
     color: #30cfc7;
@@ -160,21 +163,26 @@
 
 .userPage_register_content_footer_value{
     background-color: #f1efd6b6;
-    width: 18vw;
+    border-radius: 0 0 1vw 0;
+    width: 25.5vw;
     height: 5vh;
     margin: 2vh auto;
 
     display: flex;
     flex-direction: row;
-    align-items: center;
-    justify-content: space-around;
+    align-items: center;    
+    justify-content: right;
 }
 
 .userPage_register_content_footer_value p{
-    width: 18vw;
-    font-size: 1vw;
+    width: 20vw;
+    margin: auto;
+    display: flex;
+    justify-content: right;
+    
+    font-size: 1.2vw;
     font-weight: bold;
-    color: #30cfc7;
+    color: #1b7772;
     text-transform: uppercase;
 }
 
